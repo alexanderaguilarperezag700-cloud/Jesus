@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mariana</title>
+    <style>
+        body { background: #000; color: #ff3366; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        #heart { font-size: 80px; cursor: pointer; }
+        #message { margin-top: 20px; font-size: 20px; }
+        input { background: #333; border: 1px solid #555; color: white; padding: 10px; width: 80%; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div id="heart">❤️</div>
+    <input type="text" id="nameInput" placeholder="Escribe tu nombre...">
+    <div id="message"></div>
+    
+    <script>
+        document.getElementById('nameInput').oninput = function() {
+            if(this.value.toLowerCase() === "mariana") {
+                document.getElementById('message').innerHTML = "<h1>¡Hola, Mariana!</h1><p>Hecho con amor y código para ti. 🧠</p>";
+                document.getElementById('heart').style.color = "#ff0000";
+            }
+        }
+    </script>
+</body>
+</html>
