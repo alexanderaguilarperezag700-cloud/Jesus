@@ -5,22 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Mariana</title>
     <style>
-        body { background: #000; color: #ff3366; font-family: sans-serif; text-align: center; padding-top: 50px; }
-        #heart { font-size: 80px; cursor: pointer; }
-        #message { margin-top: 20px; font-size: 20px; }
-        input { background: #333; border: 1px solid #555; color: white; padding: 10px; width: 80%; border-radius: 5px; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        
+        /* Animación del latido */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+            60% { transform: scale(1); }
+        }
+
+        #heart { 
+            font-size: 80px; 
+            cursor: pointer; 
+            animation: heartbeat 1.5s infinite; 
+            display: inline-block;
+        }
+
+        input { background: #333; border: 1px solid #555; color: white; padding: 10px; width: 80%; border-radius: 5px; margin-top: 20px; }
+        #message { margin-top: 20px; font-size: 20px; color: #ff3366; }
     </style>
 </head>
 <body>
     <div id="heart">❤️</div>
-    <input type="text" id="nameInput" placeholder="Escribe tu nombre...">
+    <input type="text" id="nameInput" placeholder="Escribe tu nombre para desbloquear...">
     <div id="message"></div>
     
     <script>
         document.getElementById('nameInput').oninput = function() {
             if(this.value.toLowerCase() === "mariana") {
                 document.getElementById('message').innerHTML = "<h1>¡Hola, Mariana!</h1><p>Hecho con amor y código para ti. 🧠</p>";
-                document.getElementById('heart').style.color = "#ff0000";
+            } else {
+                document.getElementById('message').innerHTML = "";
             }
         }
     </script>
