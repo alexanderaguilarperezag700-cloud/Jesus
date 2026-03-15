@@ -1,55 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Mariana</title>
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        
-        @keyframes heartbeat {
+        body { background-color: #000; color: #fff; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        @keyframes latido {
             0% { transform: scale(1); }
-            15% { transform: scale(1.2); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.15); }
-            60% { transform: scale(1); }
+            20% { transform: scale(1.2); }
+            40% { transform: scale(1); }
         }
-
-        #heart { 
-            font-size: 80px; 
-            animation: heartbeat 1.5s infinite; 
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        input { background: #333; border: 1px solid #555; color: white; padding: 12px; width: 80%; border-radius: 8px; font-size: 16px; outline: none; }
-        #message { margin-top: 25px; padding: 0 20px; }
-        h1 { color: #ff3366; font-size: 24px; margin-bottom: 10px; }
-        p { font-size: 18px; margin: 5px 0; }
+        #corazon { font-size: 80px; animation: latido 1.5s infinite; margin-bottom: 20px; }
+        input { background: #222; border: 1px solid #444; color: #fff; padding: 12px; width: 250px; border-radius: 10px; text-align: center; font-size: 16px; }
+        #mensaje { margin-top: 25px; min-height: 100px; }
+        h1 { color: #ff3366; font-size: 22px; }
+        p { color: #ff85a1; font-size: 18px; }
     </style>
 </head>
 <body>
 
-    <div id="heart">❤️</div>
-    <input type="text" id="nameInput" placeholder="Escribe tu nombre...">
-    <div id="message"></div>
-    
+    <div id="corazon">❤️</div>
+    <input type="text" id="entrada" placeholder="Tu nombre aquí...">
+    <div id="mensaje"></div>
+
     <script>
-        document.getElementById('nameInput').oninput = function() {
-            let nombre = this.value.toLowerCase().trim();
-            if(nombre === "mariana") {
-                document.getElementById('message').innerHTML = `
-                    <h1>¡Hola, mi niña hermosa! ❤️</h1>
-                    <p style="color: #ff85a1;">Eres la persona más especial y quería 
-                    decírtelo de una forma diferente, muy a mi estilo. :v</p>
-                    <p style="font-size: 0.8em; color: #666;">(Sí, yo solito programé esto para ti)</p>
-                `;
-                document.getElementById('heart').style.animationDuration = "0.6s";
+        const inputNombre = document.getElementById('entrada');
+        const cajaMensaje = document.getElementById('mensaje');
+        const corazonAnim = document.getElementById('corazon');
+
+        inputNombre.addEventListener('input', () => {
+            const valor = inputNombre.value.toLowerCase().trim();
+            if (valor === "mariana") {
+                cajaMensaje.innerHTML = "<h1>¡Hola, mi niña hermosa! ❤️</h1><p>Eres la persona más especial y quería decírtelo de una forma diferente, muy a mi estilo. :v</p><p style='font-size: 12px; color: #555;'>(Sí, yo solito programé esto para ti)</p>";
+                corazonAnim.style.animationDuration = "0.5s";
             } else {
-                document.getElementById('message').innerHTML = "";
-                document.getElementById('heart').style.animationDuration = "1.5s";
+                cajaMensaje.innerHTML = "";
+                corazonAnim.style.animationDuration = "1.5s";
             }
-        }
+        });
     </script>
 
 </body>
