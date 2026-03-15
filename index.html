@@ -1,33 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Mariana</title>
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding-top: 100px; margin: 0; }
-        #corazon { font-size: 80px; margin-bottom: 20px; display: inline-block; }
-        input { background: #222; border: 1px solid #444; color: #fff; padding: 15px; width: 80%; border-radius: 10px; font-size: 18px; }
+        body { background-color: #000; color: #fff; font-family: sans-serif; text-align: center; margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 50px; overflow-x: hidden; }
+        @keyframes latido {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.2); }
+            40% { transform: scale(1); }
+        }
+        #corazon { font-size: 80px; animation: latido 1.5s infinite; margin-bottom: 20px; }
+        input { background: #222; border: 1px solid #444; color: #fff; padding: 12px; width: 250px; border-radius: 10px; text-align: center; font-size: 16px; outline: none; transition: 0.3s; }
+        #mensaje { margin-top: 25px; padding: 0 20px; transition: 1s; }
+        .confesion { margin-top: 100vh; margin-bottom: 100px; padding: 20px; opacity: 0; transition: 2s; }
         h1 { color: #ff3366; }
-        p { color: #ff85a1; font-size: 20px; }
+        p { color: #ff85a1; font-size: 18px; line-height: 1.6; }
+        .beso { font-style: italic; font-weight: bold; color: #fff; text-shadow: 0 0 10px #ff3366; }
     </style>
 </head>
 <body>
 
-    <div id="corazon">❤️</div><br>
-    <input type="text" id="nombre" placeholder="Escribe tu nombre..."><br>
+    <div id="corazon">❤️</div>
+    <input type="text" id="entrada" placeholder="Tu nombre aquí...">
+    
     <div id="mensaje"></div>
 
-    <script>
-        const input = document.getElementById('nombre');
-        const m = document.getElementById('mensaje');
+    <div id="secreto" class="confesion">
+        <p>La verdad...</p>
+        <p>Me vuelves loco con cada detalle. 😍</p>
+        <p class="beso">Y si te soy sincero, mi mayor deseo es poder darte un beso algún día. ✨</p>
+        <p style="font-size: 25px;">❤️</p>
+    </div>
 
-        input.oninput = function() {
-            if (input.value.toLowerCase().trim() === "mariana") {
-                m.innerHTML = "<h1>¡Hola, mi niña hermosa! ❤️</h1><p>Eres la persona más especial y quería decírtelo de una forma diferente, muy a mi estilo. :v</p>";
+    <script>
+        const inputNombre = document.getElementById('entrada');
+        const cajaMensaje = document.getElementById('mensaje');
+        const secreto = document.getElementById('secreto');
+        const corazonAnim = document.getElementById('corazon');
+
+        inputNombre.addEventListener('input', () => {
+            const valor = inputNombre.value.toLowerCase().trim();
+            if (valor === "mariana") {
+                cajaMensaje.innerHTML = "<h1>¡Hola, mi niña hermosa! ❤️</h1><p>Eres la persona más especial. Baja un poquito... :v</p>";
+                corazonAnim.style.animationDuration = "0.5s";
+                secreto.style.opacity = "1";
+                secreto.style.marginTop = "50px"; // Lo acerca para que lo vea al bajar
             } else {
-                m.innerHTML = "";
+                cajaMensaje.innerHTML = "";
+                secreto.style.opacity = "0";
+                secreto.style.marginTop = "100vh";
+                corazonAnim.style.animationDuration = "1.5s";
             }
-        };
+        });
     </script>
 
 </body>
